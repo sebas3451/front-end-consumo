@@ -87,9 +87,9 @@ export default class Excel extends Component {
 
   handleAlert(message){
     this.setState({alert:{message:message,open:true}})
-    // setTimeout(() => {
-    //   this.setState({alert:{message:'Alerta',open:false}});
-    // }, 5*1000);
+    setTimeout(() => {
+      this.setState({alert:{message:'Alerta',open:false}});
+    }, 5*1000);
   }
 
   async handleToken() {
@@ -148,8 +148,8 @@ export default class Excel extends Component {
           return response.text();
         })
         .then((data) => {
-          console.log('errror',data);
           this.setState({ loading: false });
+          this.handleAlert(data.message)
         })
         .catch((error) => {
           console.error("Error al cargar el archivo: ", error);
